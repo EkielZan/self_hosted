@@ -6,7 +6,7 @@ services:
     environment:
       - PUID=1000
       - PGID=100
-      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_ROOT_PASSWORD=password
     image: linuxserver/mariadb:latest
     ports:
       - 3306:3306/tcp
