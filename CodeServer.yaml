@@ -1,0 +1,19 @@
+version: "3"
+services:
+  Code-server:
+    container_name: Code-server
+    hostname: Code-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussels
+      - PASSWORD=password
+      - SUDO_PASSWORD=password
+      - PROXY_DOMAIN=code-server.my.domain
+      - DEFAULT_WORKSPACE=/config/workspace
+    image: linuxserver/code-server:latest
+    ports:
+      - 9443:8443/tcp
+    restart: unless-stopped
+    volumes:
+      - /portainer/Files/AppData/Config/code-server:/config
