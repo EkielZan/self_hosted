@@ -3,6 +3,7 @@ services:
     arch-mineos-node:
         network_mode: bridge
         container_name: mineos-node
+        hostname: mineos-node
         ports:
             - '8444:8443/tcp'
             - '25565-25575:25565-25575'

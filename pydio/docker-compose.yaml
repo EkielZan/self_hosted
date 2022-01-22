@@ -1,15 +1,17 @@
-version: '3.3'
+version: "3"
 services:
-    pydio-docker:
-        ports:
-            - '10080:80'
-            - '10443:443'
-        volumes:
-            - /data/fileManager/files/:/var/www/pydio-core/data/files/
-            - /data/fileManager/personal/:/var/www/pydio-core/data/personal/
-            - pydio_mysql:/var/lib/mysql/
-            - /mnt/winshare:/winshare
-        image: kdelfour/pydio-docker
-
-volumes:
-  pydio_mysql:
+  pydio:
+    container_name: pydio
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussels
+    hostname: pydio
+    image: linuxserver/pydio:latest
+    ports:
+      - 10043:443/tcp
+    restart: unless-stopped
+    volumes:
+      - /portainer/Files/AppData/Config/pydio/config:/config
+      - /data/fileManager:/data
+      - /mnt/winshare:/raiddisk
