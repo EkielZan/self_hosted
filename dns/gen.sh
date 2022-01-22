@@ -45,7 +45,7 @@ if ! [ -f $HOST_CERT ] ; then
 
     NAME_N=1
     IP_IN=1
-    for ALT_NAME in $(cat dns_list2) ; do
+    for ALT_NAME in $(cat dns_list) ; do
 	if [[ "$ALT_NAME" =~ [A-Za-z] ]]; then
 	   echo DNS = $ALT_NAME
            echo >>$HOST_EXT DNS.$NAME_N = $ALT_NAME

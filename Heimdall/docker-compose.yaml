@@ -9,8 +9,8 @@ services:
     image: linuxserver/heimdall:latest
     hostname: Heimdall
     ports:
-      - :443/tcp
-      - :80/tcp
+      - 9143:443/tcp
+      - 9180:80/tcp
     restart: unless-stopped
     volumes:
       - /volume1/docker/heimdall/config:/config
