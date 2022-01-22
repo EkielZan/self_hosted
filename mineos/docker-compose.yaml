@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+    arch-mineos-node:
+        network_mode: bridge
+        container_name: mineos-node
+        ports:
+            - '8444:8443/tcp'
+            - '25565-25575:25565-25575'
+        volumes:
+            - '/portainer/Files/AppData/Config/mineos-node:/config'
+            - '/etc/localtime:/etc/localtime:ro'
+        environment:
+            - WEBUI_PASSWORD=mineos
+            - JAVA_VERSION=11
+            - UMASK=000
+            - PUID=0
+            - PGID=0
+        image: binhex/arch-mineos-node

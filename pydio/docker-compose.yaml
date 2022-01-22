@@ -1,72 +1,15 @@
-version: "3"
+version: '3.3'
 services:
-  mariadb:
-    container_name: mariadb
-    hostname: mariadb
-    environment:
-      - PUID=1000
-      - PGID=100
-      - MYSQL_ROOT_PASSWORD=password
-    image: linuxserver/mariadb:latest
-    ports:
-      - 3306:3306/tcp
-    restart: unless-stopped
-    volumes:
-      - /portainer/Files/AppData/Config/Mariadb:/config
-  pydio:
-    cap_add:
-      - AUDIT_WRITE
-      - CHOWN
-      - DAC_OVERRIDE
-      - FOWNER
-      - FSETID
-      - KILL
-      - MKNOD
-      - NET_BIND_SERVICE
-      - NET_RAW
-      - SETFCAP
-      - SETGID
-      - SETPCAP
-      - SETUID
-      - SYS_CHROOT
-    cap_drop:
-      - AUDIT_CONTROL
-      - BLOCK_SUSPEND
-      - DAC_READ_SEARCH
-      - IPC_LOCK
-      - IPC_OWNER
-      - LEASE
-      - LINUX_IMMUTABLE
-      - MAC_ADMIN
-      - MAC_OVERRIDE
-      - NET_ADMIN
-      - NET_BROADCAST
-      - SYSLOG
-      - SYS_ADMIN
-      - SYS_BOOT
-      - SYS_MODULE
-      - SYS_NICE
-      - SYS_PACCT
-      - SYS_PTRACE
-      - SYS_RAWIO
-      - SYS_RESOURCE
-      - SYS_TIME
-      - SYS_TTY_CONFIG
-      - WAKE_ALARM
-    container_name: pydio
-    environment:
-      - TZ=Europe/Brussels
-      - PUID=1000
-      - PGID=1000
-      - EXTERNALURL=lilnas:18080
-    hostname: pydio
-    image: linuxserver/pydio-cells:latest
-    ports:
-      - 18080:8080/tcp
-    restart: unless-stopped
-    stdin_open: true
-    tty: true
-    volumes:
-      - /portainer/Files/AppData/Config/pydio/config:/config
-      - /portainer/Files/AppData/Config/pydio/data:/data
-      - /mnt/winshare:/winshare
+    pydio-docker:
+        ports:
+            - '10080:80'
+            - '10443:443'
+        volumes:
+            - /data/fileManager/files/:/var/www/pydio-core/data/files/
+            - /data/fileManager/personal/:/var/www/pydio-core/data/personal/
+            - pydio_mysql:/var/lib/mysql/
+            - /mnt/winshare:/winshare
+        image: kdelfour/pydio-docker
+
+volumes:
+  pydio_mysql:
