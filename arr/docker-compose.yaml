@@ -1,0 +1,60 @@
+version: "3"
+services:
+  Deluge:
+    container_name: Deluge
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussels
+    hostname: Deluge
+    image: linuxserver/deluge:latest
+    ports:
+      - 6881:6881/tcp
+      - 6881:6881/udp
+      - 8112:8112/tcp
+    restart: unless-stopped
+    volumes:
+      - /volume1/docker/deluge/config:/config
+      - /volume1/docker/deluge/downloads:/downloads
+  Radarr:
+    container_name: Radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussels
+    hostname: Radarr
+    image: linuxserver/radarr:latest
+    ports:
+      - 7878:7878/tcp
+    restart: unless-stopped
+    volumes:
+      - /volume1/docker/radarr/config:/config
+      - /volume1/docker/radarr/movies:/movies
+      - /volume1/docker/deluge/downloads:/downloads
+  Sonarr:
+    container_name: Sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussels
+    hostname: Sonarr
+    image: linuxserver/sonarr:latest
+    ports:
+      - 8989:8989/tcp
+    restart: unless-stopped
+    volumes:
+      - /volume1/docker/sonarr/config:/config
+      - /volume1/docker/sonarr/tv:/tv
+      - /volume1/docker/deluge/downloads:/downloads
+  prowlarr:
+    container_name: Prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+    hostname: Prowlarr
+    image: ghcr.io/linuxserver/prowlarr:develop
+    ports:
+      - 9696:9696/tcp
+    restart: unless-stopped
+    volumes:
+      - /portainer/Files/AppData/Config/Prowlarr:/config
