@@ -1,12 +1,12 @@
 version: "3"
 services:
-  Deluge:
-    container_name: Deluge
+  deluge:
+    container_name: deluge
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Brussels
-    hostname: Deluge
+    hostname: deluge
     image: linuxserver/deluge:latest
     ports:
       - 6881:6881/tcp
@@ -16,13 +16,13 @@ services:
     volumes:
       - /volume1/docker/deluge/config:/config
       - /volume1/docker/deluge/downloads:/downloads
-  Radarr:
-    container_name: Radarr
+  radarr:
+    container_name: radarr
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Brussels
-    hostname: Radarr
+    hostname: radarr
     image: linuxserver/radarr:latest
     ports:
       - 7878:7878/tcp
@@ -31,13 +31,13 @@ services:
       - /volume1/docker/radarr/config:/config
       - /volume1/docker/radarr/movies:/movies
       - /volume1/docker/deluge/downloads:/downloads
-  Sonarr:
-    container_name: Sonarr
+  sonarr:
+    container_name: sonarr
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Brussels
-    hostname: Sonarr
+    hostname: sonarr
     image: linuxserver/sonarr:latest
     ports:
       - 8989:8989/tcp
@@ -51,10 +51,24 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-    hostname: Prowlarr
+    hostname: prowlarr
     image: ghcr.io/linuxserver/prowlarr:develop
     ports:
       - 9696:9696/tcp
     restart: unless-stopped
     volumes:
       - /portainer/Files/AppData/Config/Prowlarr:/config
+  mylar:
+    container_name: mylar
+    environment:
+      - PUID=1000
+      - PGID=1000
+    hostname: mylar
+    image: linuxserver/mylar3:latest
+    ports:
+      - 8090:8090/tcp
+    restart: unless-stopped
+    volumes:
+      - /volume1/docker/mylar3/config:/config
+      - /volume1/docker/mylar3/comics:/comics
+      - /data/volume1/docker/deluge/downloads:/downloads

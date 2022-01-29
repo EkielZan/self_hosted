@@ -1,0 +1,16 @@
+version: "3"
+services:
+  Mylar3:
+    container_name: Mylar3
+    environment:
+      - PUID=1000
+      - PGID=1000
+    hostname: Mylar3
+    image: linuxserver/mylar3:latest
+    ports:
+      - 8090:8090/tcp
+    restart: unless-stopped
+    volumes:
+      - /volume1/docker/mylar3/config:/config
+      - /volume1/docker/mylar3/comics:/comics
+      - /data/volume1/docker/deluge/downloads:/downloads
