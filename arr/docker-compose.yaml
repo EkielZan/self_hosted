@@ -14,8 +14,8 @@ services:
       - 8112:8112/tcp
     restart: unless-stopped
     volumes:
-      - /volume1/docker/deluge/config:/config
-      - /volume1/docker/deluge/downloads:/downloads
+      - /data/volume1/docker/deluge/config:/config
+      - /data/volume1/docker/deluge/downloads:/downloads
   radarr:
     container_name: radarr
     environment:
@@ -28,9 +28,9 @@ services:
       - 7878:7878/tcp
     restart: unless-stopped
     volumes:
-      - /volume1/docker/radarr/config:/config
-      - /volume1/docker/radarr/movies:/movies
-      - /volume1/docker/deluge/downloads:/downloads
+      - /data/volume1/docker/radarr/config:/config
+      - /data/volume1/docker/deluge/downloads:/downloads
+      - /data/volume1/movies:/movies
   sonarr:
     container_name: sonarr
     environment:
@@ -43,32 +43,34 @@ services:
       - 8989:8989/tcp
     restart: unless-stopped
     volumes:
-      - /volume1/docker/sonarr/config:/config
-      - /volume1/docker/sonarr/tv:/tv
-      - /volume1/docker/deluge/downloads:/downloads
+      - /data/volume1/docker/sonarr/config:/config
+      - /data/volume1/docker/deluge/downloads:/downloads
+      - /data/volume1/tv:/tv
   prowlarr:
     container_name: Prowlarr
     environment:
       - PUID=1000
       - PGID=1000
+      - TZ=Europe/Brussels
     hostname: prowlarr
     image: ghcr.io/linuxserver/prowlarr:develop
     ports:
       - 9696:9696/tcp
     restart: unless-stopped
     volumes:
-      - /portainer/Files/AppData/Config/Prowlarr:/config
+      - /data/volume1/docker/Prowlarr/config:/config
   mylar:
     container_name: mylar
     environment:
       - PUID=1000
       - PGID=1000
+      - TZ=Europe/Brussels
     hostname: mylar
     image: linuxserver/mylar3:latest
     ports:
       - 8090:8090/tcp
     restart: unless-stopped
     volumes:
-      - /volume1/docker/mylar3/config:/config
-      - /volume1/docker/mylar3/comics:/comics
+      - /data/volume1/docker/mylar3/config:/config
       - /data/volume1/docker/deluge/downloads:/downloads
+      - /data/volume1/comics:/comics

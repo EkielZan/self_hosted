@@ -13,4 +13,4 @@ services:
       - 9180:80/tcp
     restart: unless-stopped
     volumes:
-      - /volume1/docker/heimdall/config:/config
+      - /data/volume1/docker/heimdall/config:/config

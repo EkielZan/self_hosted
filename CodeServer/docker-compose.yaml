@@ -16,4 +16,5 @@ services:
       - 9443:8443/tcp
     restart: unless-stopped
     volumes:
-      - /portainer/Files/AppData/Config/code-server:/config
+      - /data/volume1/docker/code-server/config:/config
+
