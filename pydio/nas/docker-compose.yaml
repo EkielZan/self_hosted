@@ -1,17 +1,17 @@
 version: "3"
 services:
   pydio:
+    image: linuxserver/pydio:latest
     container_name: pydio
+    hostname: pydio
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Brussels
-    hostname: pydio
-    image: linuxserver/pydio:latest
     ports:
       - 10043:443/tcp
     restart: unless-stopped
     volumes:
-      - /portainer/Files/AppData/Config/pydio/config:/config
+      - /data/volume1/docker/pydio/config:/config
       - /data/fileManager:/data
       - /mnt/winshare:/raiddisk

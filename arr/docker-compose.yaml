@@ -1,13 +1,13 @@
 version: "3"
 services:
   deluge:
+    image: linuxserver/deluge:latest
     container_name: deluge
+    hostname: deluge
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Brussels
-    hostname: deluge
-    image: linuxserver/deluge:latest
     ports:
       - 6881:6881/tcp
       - 6881:6881/udp
@@ -17,13 +17,13 @@ services:
       - /data/volume1/docker/deluge/config:/config
       - /data/volume1/docker/deluge/downloads:/downloads
   radarr:
+    image: linuxserver/radarr:latest
     container_name: radarr
+    hostname: radarr
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Brussels
-    hostname: radarr
-    image: linuxserver/radarr:latest
     ports:
       - 7878:7878/tcp
     restart: unless-stopped
@@ -32,13 +32,13 @@ services:
       - /data/volume1/docker/deluge/downloads:/downloads
       - /data/volume1/movies:/movies
   sonarr:
+    image: linuxserver/sonarr:latest
     container_name: sonarr
+    hostname: sonarr
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Brussels
-    hostname: sonarr
-    image: linuxserver/sonarr:latest
     ports:
       - 8989:8989/tcp
     restart: unless-stopped
@@ -47,26 +47,26 @@ services:
       - /data/volume1/docker/deluge/downloads:/downloads
       - /data/volume1/tv:/tv
   prowlarr:
+    image: ghcr.io/linuxserver/prowlarr:develop
     container_name: Prowlarr
+    hostname: prowlarr
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Brussels
-    hostname: prowlarr
-    image: ghcr.io/linuxserver/prowlarr:develop
     ports:
       - 9696:9696/tcp
     restart: unless-stopped
     volumes:
       - /data/volume1/docker/Prowlarr/config:/config
   mylar:
+    image: linuxserver/mylar3:latest
     container_name: mylar
+    hostname: mylar
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Brussels
-    hostname: mylar
-    image: linuxserver/mylar3:latest
     ports:
       - 8090:8090/tcp
     restart: unless-stopped

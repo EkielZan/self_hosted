@@ -1,15 +1,15 @@
 version: "3"
 services:
   mariadb:
+    image: linuxserver/mariadb:latest
     container_name: mariadb
     hostname: mariadb
     environment:
       - PUID=1000
       - PGID=100
       - MYSQL_ROOT_PASSWORD=password
-    image: linuxserver/mariadb:latest
     ports:
       - 3306:3306/tcp
     restart: unless-stopped
     volumes:
-      - /portainer/Files/AppData/Config/Mariadb:/config
+      - /data/volume1/docker/mariadb/config:/config
