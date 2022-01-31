@@ -15,7 +15,7 @@ services:
     restart: unless-stopped
     volumes:
       - /data/volume1/docker/deluge/config:/config
-      - /data/volume1/docker/deluge/downloads:/downloads
+      - /data/volume1/docker/torrents/downloads:/downloads
   radarr:
     image: linuxserver/radarr:latest
     container_name: radarr
@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
     volumes:
       - /data/volume1/docker/radarr/config:/config
-      - /data/volume1/docker/deluge/downloads:/downloads
+      - /data/volume1/docker/torrents/downloads:/downloads
       - /data/volume1/movies:/movies
   sonarr:
     image: linuxserver/sonarr:latest
@@ -44,21 +44,8 @@ services:
     restart: unless-stopped
     volumes:
       - /data/volume1/docker/sonarr/config:/config
-      - /data/volume1/docker/deluge/downloads:/downloads
+      - /data/volume1/docker/torrents/downloads:/downloads
       - /data/volume1/tv:/tv
-  prowlarr:
-    image: ghcr.io/linuxserver/prowlarr:develop
-    container_name: Prowlarr
-    hostname: prowlarr
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/Brussels
-    ports:
-      - 9696:9696/tcp
-    restart: unless-stopped
-    volumes:
-      - /data/volume1/docker/Prowlarr/config:/config
   mylar:
     image: linuxserver/mylar3:latest
     container_name: mylar
@@ -72,5 +59,33 @@ services:
     restart: unless-stopped
     volumes:
       - /data/volume1/docker/mylar3/config:/config
-      - /data/volume1/docker/deluge/downloads:/downloads
+      - /data/volume1/docker/torrents/downloads:/downloads
       - /data/volume1/comics:/comics
+  lidarr:
+    image: linuxserver/lidarr:latest
+    hostname: lidarr
+    container_name: lidarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussels
+    ports:
+      - 8686:8686/tcp
+    restart: unless-stopped
+    volumes:
+      - /data/volume1/docker/lidarr/config:/config
+      - /data/volume1/docker/torrents/downloads:/downloads
+      - /data/volume1/music:/music
+  prowlarr:
+    image: ghcr.io/linuxserver/prowlarr:develop
+    container_name: Prowlarr
+    hostname: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussels
+    ports:
+      - 9696:9696/tcp
+    restart: unless-stopped
+    volumes:
+      - /data/volume1/doc1ker/Prowlarr/config:/config

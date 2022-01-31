@@ -1,18 +1,18 @@
 version: '3.3'
 services:
-    arch-mineos-node:
-        image: binhex/arch-mineos-node
-        container_name: mineos-node
-        hostname: mineos-node
-        environment:
-            - WEBUI_PASSWORD=mineos
-            - JAVA_VERSION=11
-            - UMASK=000
-            - PUID=0
-            - PGID=0
-        ports:
-            - '8444:8443/tcp'
-            - '25565-25575:25565-25575'
-        volumes:
-            - '/data/volume1/docker/mineos-node:/config'
-            - '/etc/localtime:/etc/localtime:ro'
+  arch-mineos-node:
+    image: binhex/arch-mineos-node
+    container_name: mineos-node
+    hostname: mineos-node
+    environment:
+      - WEBUI_PASSWORD=mineos
+      - JAVA_VERSION=11
+      - UMASK=000
+      - PUID=0
+      - PGID=0
+    ports:
+      - '8444:8443/tcp'
+      - '25565-25575:25565-25575'
+    volumes:
+      - '/data/volume1/docker/mineos-node:/config'
+      - '/etc/localtime:/etc/localtime:ro'

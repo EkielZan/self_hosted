@@ -1,13 +1,13 @@
 version: "3"
 services:
   Heimdall:
+    image: linuxserver/heimdall:latest
     container_name: Heimdall
+    hostname: Heimdall
     environment:
       - PUID=1024
       - PGID=1000
       - TZ=Europe/Amsterdam
-    image: linuxserver/heimdall:latest
-    hostname: Heimdall
     ports:
       - 9143:443/tcp
       - 9180:80/tcp
