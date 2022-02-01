@@ -73,4 +73,4 @@ services:
       - 9696:9696/tcp
     restart: unless-stopped
     volumes:
-      - /data/volume1/doc1ker/prowlarr/config:/config
+      - /data/volume1/docker/prowlarr/config:/config
