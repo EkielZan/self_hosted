@@ -1,18 +1,29 @@
-version: '3.3'
+version: '3'
+
 services:
-  arch-mineos-node:
-    image: binhex/arch-mineos-node
-    container_name: mineos-node
-    hostname: mineos-node
-    environment:
-      - WEBUI_PASSWORD=mineos
-      - JAVA_VERSION=11
-      - UMASK=000
-      - PUID=0
-      - PGID=0
-    ports:
-      - '8444:8443/tcp'
-      - '25565-25575:25565-25575'
+  mineos:
+    image: hexparrot/mineos:latest
+    container_name: mineos_server
+    networks:
+      - mineos
+    restart: unless-stopped
+    stop_grace_period: 10m
+
     volumes:
-      - '/data/volume1/docker/mineos-node:/config'
-      - '/etc/localtime:/etc/localtime:ro'
+      - /volume1/docker/mineos-node/minecraft:/var/games/minecraft
+
+    environment:
+      USE_HTTPS: "true"
+      SERVER_PORT: 8443
+      USER_NAME: mc
+      USER_UID: 1000
+      USER_PASSWORD: raisingDead
+      #USER_PASSWORD: random_see_log
+
+    ports:
+      - "8444:8443/tcp"
+      - "25565-25570:25565-25570/tcp"
+      - "25565-25570:25565-25570/udp"
+
+networks:
+  mineos:
