@@ -27,3 +27,17 @@ services:
 
 networks:
   mineos:
+
+  # docker run -d \
+  # --net="bridge" \
+  # --name=mineos-node \
+  # -p 8444:8443/tcp \
+  # -p 25565:25565 \
+  # -v /volume1/docker/minecraft:/config \
+  # -v /etc/localtime:/etc/localtime:ro \
+  # -e WEBUI_PASSWORD=mineos \
+  # -e JAVA_VERSION=11 \
+  # -e UMASK=000 \
+  # -e PUID=0 \
+  # -e PGID=0 \
+  # binhex/arch-mineos-node
