@@ -27,7 +27,7 @@ services:
     image: grafana/grafana:latest
     user: "1000"
     volumes:
-    - /volume1/docker/grafana:/var/lib/grafana
+      - /volume1/docker/grafana:/var/lib/grafana
     ports:
       - "3000:3000"
     restart: unless-stopped
