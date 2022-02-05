@@ -1,8 +1,8 @@
 version: "3"
 services:
-  Code-server:
-    container_name: Code-server
-    hostname: Code-server
+  code-server:
+    container_name: code-server
+    hostname: code-server
     environment:
       - PUID=1000
       - PGID=1000
@@ -12,6 +12,7 @@ services:
       - PROXY_DOMAIN=vscode.lilnas.home
       - DEFAULT_WORKSPACE=/config/workspace
     image: linuxserver/code-server:latest
+    network_mode: bridge
     ports:
       - 9443:8443/tcp
     restart: unless-stopped
