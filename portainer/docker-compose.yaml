@@ -8,14 +8,10 @@ services:
       - 8000:8000/tcp
       - 9000:9000/tcp
     restart: unless-stopped
-    networks:
-      - bridge
+    network_mode: bridge
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
 volumes:
   portainer_data:
-    external: true
-networks:
-  bridge:
     external: true

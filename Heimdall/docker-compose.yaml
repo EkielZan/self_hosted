@@ -8,14 +8,10 @@ services:
       - PUID=1024
       - PGID=1000
       - TZ=Europe/Amsterdam
-    networks:
-      - bridge
+    network_mode: bridge
     ports:
       - 9143:443/tcp
       - 9180:80/tcp
     restart: unless-stopped
     volumes:
       - /data/volume1/docker/heimdall/config:/config
-networks:
-  bridge:
-    external: true

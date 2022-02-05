@@ -13,8 +13,7 @@ services:
       - 6881:6881/udp
       - 8112:8112/tcp
     restart: unless-stopped
-    networks:
-      - bridge
+    network_mode: bridge
     volumes:
       - /data/volume1/docker/deluge/config:/config
       - /data/volume1/docker/torrents/downloads:/downloads
@@ -29,8 +28,7 @@ services:
     ports:
       - 7878:7878/tcp
     restart: unless-stopped
-    networks:
-      - bridge
+    network_mode: bridge
     volumes:
       - /data/volume1/docker/radarr/config:/config
       - /data/volume1/docker/torrents/downloads:/downloads
@@ -46,8 +44,7 @@ services:
     ports:
       - 8989:8989/tcp
     restart: unless-stopped
-    networks:
-      - bridge
+    network_mode: bridge
     volumes:
       - /data/volume1/docker/sonarr/config:/config
       - /data/volume1/docker/torrents/downloads:/downloads
@@ -62,8 +59,7 @@ services:
       - TZ=Europe/Brussels
     ports:
       - 8686:8686/tcp
-    networks:
-      - bridge
+    network_mode: bridge
     restart: unless-stopped
     volumes:
       - /data/volume1/docker/lidarr/config:/config
@@ -77,13 +73,9 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Brussels
-    networks:
-      - bridge
+    network_mode: bridge
     ports:
       - 9696:9696/tcp
     restart: unless-stopped
     volumes:
       - /data/volume1/docker/prowlarr/config:/config
-networks:
-  bridge:
-    external: true
