@@ -9,12 +9,13 @@ services:
       - TZ=Europe/Brussels
       - PASSWORD=password
       - SUDO_PASSWORD=password
-      - PROXY_DOMAIN=code-server.my.domain
+      - PROXY_DOMAIN=vscode.lilnas.home
       - DEFAULT_WORKSPACE=/config/workspace
     image: linuxserver/code-server:latest
     ports:
       - 9443:8443/tcp
     restart: unless-stopped
     volumes:
-      - /data/volume1/docker/code-server/config:/config
+      - /volume1/docker/code-server/config:/config
+      - /volume1/docker:/mnt/docker
 
