@@ -9,7 +9,11 @@ services:
     restart: unless-stopped
     volumes:
       - uptime-kuma:/app/data
+    networks:
+      - bridge
 volumes:
   uptime-kuma:
     external: true
-
+networks:
+  bridge:
+    external: true
