@@ -1,0 +1,16 @@
+version: "3"
+services:
+  Tautulli:
+    image: linuxserver/tautulli:latest
+    container_name: Tautulli
+    hostname: tautulli
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussels
+    ports:
+      - 8281:8181/tcp
+    restart: unless-stopped
+    volumes:
+      - /volume1/docker/tautulli/config:/config
+ 
