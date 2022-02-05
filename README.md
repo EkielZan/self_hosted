@@ -20,7 +20,6 @@ Here are the actual list of the self hosted services
     - Deluge : [Link](https://deluge-torrent.org/)
 - Uptime Kuma : [Link](https://github.com/louislam/uptime-kuma)
 
-
 In addition to those containerised services, here is a list of other services installed on my homelab servers (Some are docker service w/out docker-compose):
 
 - Vaultwarden : [Link](https://wiki-tech.io/SelfHosted/Bitwarden) 
