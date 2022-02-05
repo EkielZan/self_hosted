@@ -2,7 +2,7 @@
 
 This repo is used to store all the docker-compose files for my personnal homelab
 
-Here are the actual list of my self hosted services
+Here are the actual list of the self hosted services
 
 - VS Code server : [Link](https://github.com/coder/code-server)
 - Grafana Loki : [Link](https://grafana.com/oss/loki/)
@@ -20,5 +20,20 @@ Here are the actual list of my self hosted services
     - Deluge : [Link](https://deluge-torrent.org/)
 - Uptime Kuma : [Link](https://github.com/louislam/uptime-kuma)
 
+
+In addition to those containerised services, here is a list of other services installed on my homelab servers (Some are docker service w/out docker-compose):
+
+- Vaultwarden : [Link](https://wiki-tech.io/SelfHosted/Bitwarden) 
+- Cockpit : [Link](https://cockpit-project.org/)
+- Cups : [Link](http://www.cups.org/)
+- Docker : [Link](https://docs.docker.com/)
+- Home Assistant : [Link](https://www.home-assistant.io/)
+- Octoprint : [Link](https://octoprint.org/)
+- OpenMediaVault : [Link](https://www.openmediavault.org/)
+- Pi-hole : [Link](https://pi-hole.net/)
+- Webmin : [Link](https://webmin.com/)
+- Transmission : [Link](https://transmissionbt.com/)
+
 ### TODO
     - Do a nice README
+    - Migrate Vaulwarden outside homeassistant
