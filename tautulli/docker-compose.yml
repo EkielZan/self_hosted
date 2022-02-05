@@ -1,8 +1,8 @@
 version: "3"
 services:
-  Tautulli:
+  tautulli:
     image: linuxserver/tautulli:latest
-    container_name: Tautulli
+    container_name: tautulli
     hostname: tautulli
     environment:
       - PUID=1000
