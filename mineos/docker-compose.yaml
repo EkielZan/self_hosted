@@ -4,8 +4,7 @@ services:
   mineos:
     image: hexparrot/mineos:latest
     container_name: mineos_server
-    networks:
-      - mineos
+    network_mode: bridge
     restart: unless-stopped
     stop_grace_period: 10m
 
@@ -24,9 +23,6 @@ services:
       - "8444:8443/tcp"
       - "25565-25570:25565-25570/tcp"
       - "25565-25570:25565-25570/udp"
-
-networks:
-  mineos:
 
   # docker run -d \
   # --net="bridge" \

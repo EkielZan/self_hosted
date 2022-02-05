@@ -10,6 +10,7 @@ services:
       - TZ=Europe/Brussels
     ports:
       - 10043:443/tcp
+    network_mode: bridge
     restart: unless-stopped
     volumes:
       - /data/volume1/docker/pydio/config:/config

@@ -4,6 +4,7 @@ services:
     image: linuxserver/mariadb:latest
     container_name: mariadb
     hostname: mariadb
+    network_mode: bridge
     environment:
       - PUID=1000
       - PGID=100

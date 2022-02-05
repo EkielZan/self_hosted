@@ -10,6 +10,7 @@ services:
       - TZ=Europe/Brussels
     ports:
       - 8281:8181/tcp
+    network_mode: bridge
     restart: unless-stopped
     volumes:
       - /volume1/docker/tautulli/config:/config

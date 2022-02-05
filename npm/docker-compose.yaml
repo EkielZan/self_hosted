@@ -9,6 +9,7 @@ services:
       - 80:80/tcp
       - 81:81/tcp
     restart: unless-stopped
+    network_mode: bridge
     volumes:
       - /data/volume1/docker/nginx-proxy/letsencrypt:/etc/letsencrypt
       - /data/volume1/docker/nginx-proxy/data:/data

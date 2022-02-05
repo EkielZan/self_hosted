@@ -8,6 +8,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Brussels
+    network_mode: bridge
     ports:
       - 3406:443/tcp
     restart: unless-stopped
