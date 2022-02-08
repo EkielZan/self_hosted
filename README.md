@@ -16,13 +16,13 @@ Here are the actual list of the self hosted services
 - Pydio : [Link](https://pydio.com/fr)
 - Tautulli : [Link](https://tautulli.com/)
 - Some Torrents Applications
-    - Prowlarr, Radarr, Sonarr, Lidarr : [Link](https://wiki.servarr.com/)
-    - Deluge : [Link](https://deluge-torrent.org/)
+  - Prowlarr, Radarr, Sonarr, Lidarr : [Link](https://wiki.servarr.com/)
+  - Deluge : [Link](https://deluge-torrent.org/)
 - Uptime Kuma : [Link](https://github.com/louislam/uptime-kuma)
 
 In addition to those containerised services, here is a list of other services installed on my homelab servers (Some are docker service w/out docker-compose):
 
-- Vaultwarden : [Link](https://wiki-tech.io/SelfHosted/Bitwarden) 
+- Vaultwarden : [Link](https://wiki-tech.io/SelfHosted/Bitwarden)
 - Cockpit : [Link](https://cockpit-project.org/)
 - Cups : [Link](http://www.cups.org/)
 - Docker : [Link](https://docs.docker.com/)
@@ -34,5 +34,7 @@ In addition to those containerised services, here is a list of other services in
 - Transmission : [Link](https://transmissionbt.com/)
 
 ### TODO
+
     - Do a nice README
+    - Filling the wiki
     - Migrate Vaulwarden outside homeassistant
