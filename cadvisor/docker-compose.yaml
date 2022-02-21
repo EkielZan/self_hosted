@@ -1,0 +1,15 @@
+version: "3"
+services:
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor
+    container_name: monitoring_cadvisor
+    hostname: monitoring_cadvisor
+    restart: unless-stopped
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    network_mode: bridge
+    ports:
+      - 8081:8080
