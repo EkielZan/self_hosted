@@ -11,7 +11,7 @@ services:
     ports:
       - 8082:80
     volumes:
-      - /volume1/:/srv
+      - /volume1/filebrowser:/srv
       - /volume1/docker/filebrowser/filebrowser.db:/database.db
     restart: unless-stopped
     security_opt:

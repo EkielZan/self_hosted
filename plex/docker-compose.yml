@@ -1,16 +1,12 @@
 version: "3"
 services:
-  Plex:
+  plex:
     image: linuxserver/plex:latest
-    container_name: Plex
-    networks:
-      - host
+    container_name: plex
+    network_mode: host
     restart: unless-stopped
     volumes:
       - /volume1/docker/plex/config:/config
       - /volume1/docker/plex/movies:/movies
       - /volume1/docker/plex/music:/music
       - /volume1/docker/plex/tv:/tv
-networks:
-  host:
-    external: true
