@@ -10,10 +10,10 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Paris
-      - SERVEURURL=vpn.ekielzan.com #optional
+      - SERVERURL=vpn.ekielzan.com #optional
       - SERVERPORT=51820 #optional
       - PEERS=6 #optional
-      - PEERDNS=auto #optional
+      - PEERDNS=192.168.68.105 #optional
       - INTERNAL_SUBNET=192.168.69.0 #optional
     volumes:
       - /volume1/docker/wireguard-server/config:/config
