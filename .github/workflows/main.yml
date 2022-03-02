@@ -31,4 +31,4 @@ jobs:
         with:
           # File(s) or Directory, separate by space if multiple files or folder are specified
           file_or_dir: .
-          config_data: "{extends: default, rules: {new-line-at-end-of-file: disable,line-length: disable, truthy: warning}}"
+          config_data: "{extends: default, rules: {new-line-at-end-of-file: disable,line-length: disable, truthy: disable}}"
