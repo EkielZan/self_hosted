@@ -1,9 +1,9 @@
 version: "3"
 services:
-  nginx-proxy-manager:
+  npm:
     image: jc21/nginx-proxy-manager:latest
-    container_name: nginx-proxy-manager
-    hostname: nginx-proxy-manager
+    container_name: npm
+    hostname: npm
     ports:
       - 443:443/tcp
       - 80:80/tcp

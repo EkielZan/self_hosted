@@ -1,0 +1,18 @@
+---
+version: '3'
+services:
+  file-browser:
+    image: filebrowser/filebrowser
+    container_name: file-browser
+    user: 1000:1000
+    network_mode: bridge
+    environment:
+      - TZ=Europe/Brussels
+    ports:
+      - 8082:80
+    volumes:
+      - /srv/dev-disk-by-uuid-ef001675-7821-4ed9-8528-586c440f5fe6/winshare:/srv
+      - /volume1/docker/filebrowser/filebrowser.db:/database.db
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true

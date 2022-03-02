@@ -1,0 +1,28 @@
+version: "2.1"
+services:
+  wireguard:
+    image: linuxserver/wireguard
+    container_name: wireguard
+    hostname: wireguard
+    network_mode: bridge
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussels
+      - SERVERURL=vpn.ekielzan.com
+      - SERVERPORT=51820
+      - PEERS=phone1,phone2,pc1,pc2,pc3,misc1
+      - PEERDNS=auto
+      - INTERNAL_SUBNET=192.168.69.0
+    volumes:
+      - /volume1/docker/wireguard-server/config:/config
+      - /lib/modules:/lib/modules
+    ports:
+      - 51820:51820/udp
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
+
