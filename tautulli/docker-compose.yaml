@@ -15,4 +15,3 @@ services:
     restart: unless-stopped
     volumes:
       - /volume1/docker/tautulli/config:/config
- 
