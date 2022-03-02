@@ -1,2 +1,0 @@
-# Single line
-config_data: "{extends: default, rules: {new-line-at-end-of-file: disable}}"
