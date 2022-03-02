@@ -37,6 +37,6 @@ For more information on how to setup this and find good practices, please head o
 
 ### TODO
 
-    - Do a nice README
+    - Do a better README
     - Filling the wiki
     - Migrate Vaulwarden outside homeassistant
