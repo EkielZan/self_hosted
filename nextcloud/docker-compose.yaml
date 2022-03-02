@@ -16,3 +16,4 @@ services:
     volumes:
       - /data/volume1/docker/nextcloud/Config:/config
       - /datancl:/data
+      
