@@ -1,0 +1,9 @@
+---
+# Multi line
+config_data: |
+  extends: default
+  rules:
+    new-line-at-end-of-file:
+      level: disable
+    trailing-spaces:
+      level: disable
