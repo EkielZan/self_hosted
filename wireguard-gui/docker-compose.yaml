@@ -8,7 +8,7 @@ services:
             - SYS_MODULE
         environment:
             - WG_HOST=vpn.ekielzan.com
-            - PASSWORD=raisingDead
+            - PASSWORD=password
             - WG_DEFAULT_ADDRESS=192.168.69.x
             - WG_DEFAULT_DNS=192.168.68.105
         volumes:
