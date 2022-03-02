@@ -34,5 +34,4 @@ services:
     restart: unless-stopped
     networks:
       - loki
-
-# https://docs.technotim.live/posts/grafana-loki/
+      # https://docs.technotim.live/posts/grafana-loki/
