@@ -4,6 +4,6 @@ config_data: |
   extends: default
   rules:
     new-line-at-end-of-file:
-      level: disable
+      level: warning
     trailing-spaces:
-      level: disable
+      level: warning
