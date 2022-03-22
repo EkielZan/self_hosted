@@ -33,7 +33,7 @@ services:
     volumes:
       - /data/volume1/docker/radarr/config:/config
       - /data/volume1/docker/torrents/downloads:/downloads
-      - /data/volume1/library/movies:/movies
+      - /mnt/3tb/movies:/movies/library
   sonarr:
     image: linuxserver/sonarr:latest
     container_name: sonarr
@@ -49,7 +49,7 @@ services:
     volumes:
       - /data/volume1/docker/sonarr/config:/config
       - /data/volume1/docker/torrents/downloads:/downloads
-      - /data/volume1/library/tv:/tv
+      - /mnt/3tb/tvshow:/tv/library
   lidarr:
     image: linuxserver/lidarr:latest
     hostname: lidarr
@@ -65,7 +65,7 @@ services:
     volumes:
       - /data/volume1/docker/lidarr/config:/config
       - /data/volume1/docker/torrents/downloads:/downloads
-      - /data/volume1/library/music:/music
+      - /mnt/4tb/winshare/music:/music/library
   prowlarr:
     image: ghcr.io/linuxserver/prowlarr:develop
     container_name: Prowlarr
