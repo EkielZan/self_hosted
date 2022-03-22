@@ -7,7 +7,7 @@ services:
     network_mode: bridge
     environment:
       - PUID=1000
-      - PGID=100
+      - PGID=1000
       - MYSQL_ROOT_PASSWORD=password
     ports:
       - 3306:3306/tcp
