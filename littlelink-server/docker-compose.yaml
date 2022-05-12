@@ -11,7 +11,7 @@ services:
       - META_AUTHOR=Gilles Dejeneffe
       - THEME=Dark
       # - FAVICON_URL=https://pbs.twimg.com/profile_images/1286144221217316864/qIAsKOpB_200x200.jpg
-      - AVATAR_URL=https://media-exp1.licdn.com/dms/image/C4D03AQFLPirVH7_CbQ/profile-displayphoto-shrink_200_200/0/1645999892372?e=1651708800&v=beta&t=mirZFGiHP5HgDtEtz1RMjdK7TCxa7NAiyc-KAaVvynE
+      - AVATAR_URL=https://i.ibb.co/GFGpB76/1645999892372.jpg
       # - AVATAR_2X_URL=https://pbs.twimg.com/profile_images/1286144221217316864/qIAsKOpB_400x400.jpg
       - AVATAR_ALT=Gilles Profile Pic
       - NAME=Gilles Dejeneffe
