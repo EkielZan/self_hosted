@@ -1,0 +1,23 @@
+version: '3'
+services:
+  ouroboros:
+    container_name: ouroboros
+    hostname: ouroboros
+    image: pyouroboros/ouroboros
+    network_mode: bridge
+    ports:
+      - 8001:8000/tcp
+    environment:
+      - CLEANUP=true
+      - INTERVAL=300
+      - LOG_LEVEL=info
+      - SELF_UPDATE=false
+      - IGNORE=mariadb
+      - LATEST=true
+      - TZ=Europe/Brussels
+      - DATA_EXPORT=prometheus
+      - PROMETHEUS_ADDR=0.0.0.0
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: -N 'discord://Ouroboros@934214399240048700/6mGCOBiS5vPW9WnL5Uy5Pf6hEi1oaCLKyXKRQ3gBMDUwQWXTaPF3WW79ApfX5AAMqPnl'
