@@ -8,9 +8,9 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Brussels
-      - PASSWORD=password
-      - SUDO_PASSWORD=password
-      - PROXY_DOMAIN=vscode.lilnas.home
+      - PASSWORD=${ACCESS_PASSWORD}
+      - SUDO_PASSWORD=${ACCESS_PASSWORD}
+      - PROXY_DOMAIN=${PROXY_DOMAIN}
       - DEFAULT_WORKSPACE=/config/workspace
     image: linuxserver/code-server:latest
     network_mode: bridge

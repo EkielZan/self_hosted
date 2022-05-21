@@ -36,9 +36,3 @@ In addition to those containerised services, here is a list of other services in
  - Webmin : [Link](https://webmin.com/)
 
 For more information on how to setup this and find good practices, please head over to the wiki: https://github.com/EkielZan/self_hosted/wiki
-
-### TODO
-
-    - Do a better README
-    - Filling the wiki
-    - Migrate Vaulwarden outside homeassistant

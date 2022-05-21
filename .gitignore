@@ -1,4 +1,4 @@
 dns/lilnas
 dns/lilnas.local
 dns/lilnas.home
-vaultwarden/.env
+*/.env
