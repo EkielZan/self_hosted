@@ -20,3 +20,4 @@ services:
     volumes:
       - /volume1/docker/code-server/config:/config
       - /volume1/docker:/mnt/docker
+      - /volume1/workspace:/workspace
