@@ -1,0 +1,18 @@
+---
+version: "2.1"
+services:
+  duplicati:
+    image: lscr.io/linuxserver/duplicati:latest
+    container_name: duplicati
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussels
+      - CLI_ARGS= #optional
+    volumes:
+      - /volume1/docker/duplicati/config:/config
+      - /mnt/4tb/backups:/backups
+      - /volume1/docker:/source
+    ports:
+      - 8200:8200
+    restart: unless-stopped

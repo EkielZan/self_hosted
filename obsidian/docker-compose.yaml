@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  obsidian:
+    image: 'ghcr.io/sytone/obsidian-remote:latest'
+    container_name: obsidian-remote
+    restart: unless-stopped
+    ports:
+      - 8280:8080
+    volumes:
+      - /volume1/docker/obsidian/vaults:/vaults
+      - /volume1/docker/obsidian/config:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussles
+      - DOCKER_MODS=linuxserver/mods:universal-git
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.obsidian.entrypoints=http"
+      - "traefik.http.routers.obsidian.rule=Host(`obsidian.local.ekielzan.com`)"
+      - "traefik.http.middlewares.obsidian-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.obsidian.middlewares=obsidian-https-redirect"
+      - "traefik.http.routers.obsidian-secure.entrypoints=https"
+      - "traefik.http.routers.obsidian-secure.rule=Host(`obsidian.local.ekielzan.com`)"
+      - "traefik.http.routers.obsidian-secure.tls=true"
+      - "traefik.http.routers.obsidian-secure.service=obsidian"
+      - "traefik.http.services.obsidian.loadbalancer.server.port=8080"
+      - "traefik.docker.network=proxy"
+networks:
+  proxy:
+    external: true

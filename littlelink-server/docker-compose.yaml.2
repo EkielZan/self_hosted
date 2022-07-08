@@ -30,14 +30,25 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.littelink.entrypoints=http"
-      - "traefik.http.routers.littelink.rule=Host(`littelink.local.ekielzan.com`,`www.ekielzan.com`)"
-      - "traefik.http.middlewares.littelink-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.littelink.rule=Host(`littelink.local.ekielzan.com`) || Host (`www.ekielzan.com`)"
       - "traefik.http.routers.littelink.middlewares=littelink-https-redirect"
       - "traefik.http.routers.littelink-secure.entrypoints=https"
-      - "traefik.http.routers.littelink-secure.rule=Host(`littelink.local.ekielzan.com`,`www.ekielzan.com`)"
+      - "traefik.http.routers.littelink-secure.rule=Host(`littelink.local.ekielzan.com`) || Host (`www.ekielzan.com`)"
       - "traefik.http.routers.littelink-secure.tls=true"
       - "traefik.http.routers.littelink-secure.service=littelink"
+
+      - "traefik.http.routers.wlittelink.entrypoints=http"
+      - "traefik.http.routers.wlittelink.rule=Host(`www.ekielzan.com`)"
+      - "traefik.http.routers.wlittelink.middlewares=littelink-https-redirect"
+      - "traefik.http.routers.wlittelink-secure.entrypoints=https"
+      - "traefik.http.routers.wlittelink-secure.rule=Host(`www.ekielzan.com`)"
+      - "traefik.http.routers.wlittelink-secure.tls=true"
+      - "traefik.http.routers.wlittelink-secure.service=littelink"
+
+      - "traefik.http.middlewares.littelink-https-redirect.redirectscheme.scheme=https"
+
       - "traefik.http.services.littelink.loadbalancer.server.port=3000"
+      - "traefik.http.services.littelink.loadbalancer.server.scheme=http"
       - "traefik.docker.network=proxy"
 networks:
   proxy:

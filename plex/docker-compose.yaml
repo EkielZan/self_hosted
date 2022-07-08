@@ -4,12 +4,22 @@ services:
   plex:
     image: linuxserver/plex:latest
     container_name: plex
-    network_mode: host
+    #network_mode: host
     restart: unless-stopped
     environment:
       - PUID=1000
       - PGID=1000
       - VERSION=docker
+    ports:
+      - "32400:32400/tcp"
+      - "3005:3005/tcp"
+      - "8324:8324/tcp"
+      - "32469:32469/tcp"
+      - "1900:1900/udp"
+      - "32410:32410/udp"
+      - "32412:32412/udp"
+      - "32413:32413/udp"
+      - "32414:32414/udp"
     volumes:
       - /dev/dri:/dev/dri
       - /volume1/docker/plex/config:/config
@@ -17,3 +27,20 @@ services:
       - /mnt/3tb/movies:/movies
       - /mnt/3tb/tvshow/:/tv
       - /mnt/3tb/DA/:/DA
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.plex.entrypoints=http"
+      - "traefik.http.routers.plex.rule=Host(`plex.local.ekielzan.com`)"
+      - "traefik.http.middlewares.plex-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.plex.middlewares=plex-https-redirect"
+      - "traefik.http.routers.plex-secure.entrypoints=https"
+      - "traefik.http.routers.plex-secure.rule=Host(`plex.local.ekielzan.com`)"
+      - "traefik.http.routers.plex-secure.tls=true"
+      - "traefik.http.routers.plex-secure.service=plex"
+      - "traefik.http.services.plex.loadbalancer.server.port=32400"
+      - "traefik.docker.network=proxy"
+networks:
+  proxy:
+    external: true

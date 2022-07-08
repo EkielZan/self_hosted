@@ -1,0 +1,18 @@
+---
+version: "2.1"
+services:
+  mylar3:
+    image: lscr.io/linuxserver/mylar3:latest
+    container_name: mylar3
+    hostname: mylar3
+    network_mode: bridge
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /volume1/docker/mylar3/config:/config
+      - /volume1/docker/mylar3/downloads:/downloads
+      - /mnt/4tb/winshare/new_comics:/comics
+    ports:
+      - 8090:8090
+    restart: unless-stopped
