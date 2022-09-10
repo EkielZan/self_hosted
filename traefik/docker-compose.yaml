@@ -22,9 +22,8 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /volume1/docker/traefik/data/traefik.yml:/traefik.yml:ro
-      - /volume1/docker/traefik/data/acme.json:/acme.json
-      - /volume1/docker/traefik/data/config.yml:/config.yml:ro
+      - /data/docker/traefik/data/traefik.yml:/traefik.yml:ro
+      - /data/docker/traefik/data/config.yml:/config.yml:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=http"
@@ -40,8 +39,6 @@ services:
       - "traefik.http.routers.traefik-secure.tls.certresolver=cloudflare"
       - "traefik.http.routers.traefik-secure.tls.domains[0].main=local.ekielzan.com"
       - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.local.ekielzan.com"
-      - "traefik.http.routers.traefik-secure.tls.domains[1].main=lilnas.home"
-      - "traefik.http.routers.traefik-secure.tls.domains[1].sans=*.lilnas.home"
       - "traefik.http.routers.traefik-secure.service=api@internal"
     command:
       - "--api=true"

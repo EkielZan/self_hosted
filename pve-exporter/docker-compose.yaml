@@ -1,0 +1,18 @@
+---
+version: '3.3'
+services:
+  prometheus-pve-exporter:
+    image: prompve/prometheus-pve-exporter
+    container_name: prometheus-pve-exporter
+    hostname: prometheus-pve-exporter
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussels
+#    network_mode: bridge
+    network_mode: bridge
+    ports:
+       - 9221:9221
+    restart: unless-stopped
+    volumes:
+       - /data/docker/pvbe-exporter/pve.yml:/etc/pve.yml

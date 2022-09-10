@@ -34,7 +34,7 @@ services:
       - "traefik.http.middlewares.littelink-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.littelink.middlewares=littelink-https-redirect"
       - "traefik.http.routers.littelink-secure.entrypoints=https"
-      - "traefik.http.routers.littelink-secure.rule=Host(`littelink.local.ekielzan.com`,`www.ekielzan.com`)"
+      - "traefik.http.routers.littelink-secure.rule=Host(`littelink.local.ekielzan.com`,`www.ekielzan.com`,`ekielzan.com`)"
       - "traefik.http.routers.littelink-secure.tls=true"
       - "traefik.http.routers.littelink-secure.service=littelink"
       - "traefik.http.services.littelink.loadbalancer.server.port=3000"

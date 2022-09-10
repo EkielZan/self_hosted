@@ -6,7 +6,7 @@ services:
     container_name: heimdall
     hostname: heimdall
     environment:
-      - PUID=1024
+      - PUID=1000
       - PGID=1000
       - TZ=Europe/Brussels
 #    network_mode: bridge
@@ -17,7 +17,7 @@ services:
       - 9180:80/tcp
     restart: unless-stopped
     volumes:
-      - /data/volume1/docker/heimdall/config:/config
+      - /data/docker/heimdall/config:/config
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.heimdall.entrypoints=http"

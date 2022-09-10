@@ -5,12 +5,29 @@ services:
     container_name: uptime-kuma
     hostname: uptime_kuma
     image: louislam/uptime-kuma:1
-    ports:
-      - 3001:3001/tcp
     restart: unless-stopped
     volumes:
       - uptime-kuma:/app/data
-    network_mode: bridge
+      - /data/docker/common/resolv.conf:/etc/resolv.conf
+    networks:
+      - proxy
+      # https://docs.technotim.live/posts/grafana-loki/
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.uptimekuma.entrypoints=http"
+      - "traefik.http.routers.uptimekuma.rule=Host(`ukuma.local.ekielzan.com`)"
+      - "traefik.http.middlewares.uptimekuma-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.uptimekuma.middlewares=uptimekuma-https-redirect"
+      - "traefik.http.routers.uptimekuma-secure.entrypoints=https"
+      - "traefik.http.routers.uptimekuma-secure.rule=Host(`ukuma.local.ekielzan.com`)"
+      - "traefik.http.routers.uptimekuma-secure.tls=true"
+      - "traefik.http.routers.uptimekuma-secure.service=uptimekuma"
+      - "traefik.http.services.uptimekuma.loadbalancer.server.port=3001"
+      - "traefik.docker.network=proxy"
+
 volumes:
   uptime-kuma:
+    external: true
+networks:
+  proxy:
     external: true

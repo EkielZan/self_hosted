@@ -11,5 +11,5 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - /volume1/docker/cloudflare/config.json:/config.json
+      - /data/docker/cloudflare/config.json:/config.json
     restart: unless-stopped

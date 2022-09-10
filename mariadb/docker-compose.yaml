@@ -9,9 +9,9 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     ports:
       - 3306:3306/tcp
     restart: unless-stopped
     volumes:
-      - /data/volume1/docker/mariadb/config:/config
+      - /data/docker/mariadb/config:/config

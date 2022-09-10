@@ -1,0 +1,18 @@
+version: '3.4'
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    hostname: vaultwarden
+    environment:
+      - ADMIN_TOKEN=${ADMIN_TOKEN}
+      - SIGNUPS_ALLOWED=${SIGNUPS_ALLOWED}
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussels
+    volumes:
+      - /data/docker/vaultwarden/data:/data
+    ports:
+      - 17881:80
+    network_mode: bridge
+    restart: unless-stopped

@@ -8,7 +8,7 @@ services:
   loki:
     image: grafana/loki:2.4.0
     volumes:
-      - /volume1/docker/loki:/etc/loki
+      - /data/docker/loki:/etc/loki
     ports:
       - "3100:3100"
     restart: unless-stopped
@@ -19,7 +19,7 @@ services:
     image: grafana/promtail:2.4.0
     volumes:
       - /var/log:/var/log
-      - /volume1/docker/promtail:/etc/promtail
+      - /data/docker/promtail:/etc/promtail
     # ports:
     #   - "1514:1514" # this is only needed if you are going to send syslogs
     restart: unless-stopped
@@ -30,7 +30,7 @@ services:
     image: grafana/grafana:latest
     user: "1000"
     volumes:
-      - /volume1/docker/grafana:/var/lib/grafana
+      - /data/docker/grafana:/var/lib/grafana
     ports:
       - "3000:3000"
     restart: unless-stopped
