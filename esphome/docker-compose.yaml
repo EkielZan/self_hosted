@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  esphome:
+    container_name: esphome
+    network_mode: bridge
+    restart: unless-stopped
+    volumes:
+      - '/data/docker/esphome:/config'
+    image: esphome/esphome
+    ports:
+      - 6052:6052
+    environment:
+      - TZ=Europe/Brussels
+      - ESPHOME_DASHBOARD_USE_PING=true

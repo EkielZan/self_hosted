@@ -4,7 +4,7 @@ services:
   uptime-kuma:
     container_name: uptime-kuma
     hostname: uptime_kuma
-    image: louislam/uptime-kuma:1
+    image: louislam/uptime-kuma:latest
     restart: unless-stopped
     volumes:
       - uptime-kuma:/app/data
