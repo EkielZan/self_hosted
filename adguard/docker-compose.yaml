@@ -1,0 +1,33 @@
+version: "3.4"
+services:
+   adguardhome:
+     image: adguard/adguardhome
+     container_name: adguardhome
+     ports:
+       - 53:53/tcp
+       - 53:53/udp
+       - 784:784/udp
+       - 853:853/tcp
+       - 3001:3000/tcp
+       - 83:80/tcp
+     volumes:
+       - /volume1/docker/adguard/work:/opt/adguardhome/work
+       - /volume1/docker/adguard/conf:/opt/adguardhome/conf
+     networks:
+       - proxy
+     restart: unless-stopped
+     labels:
+       - "traefik.enable=true"
+       - "traefik.http.routers.adguard.entrypoints=http"
+       - "traefik.http.routers.adguard.rule=Host(`adguard.local.ekielzan.com`)"
+       - "traefik.http.middlewares.adguard-https-redirect.redirectscheme.scheme=https"
+       - "traefik.http.routers.adguard.middlewares=adguard-https-redirect"
+       - "traefik.http.routers.adguard-secure.entrypoints=https"
+       - "traefik.http.routers.adguard-secure.rule=Host(`adguard.local.ekielzan.com`)"
+       - "traefik.http.routers.adguard-secure.tls=true"
+       - "traefik.http.routers.adguard-secure.service=adguard"
+       - "traefik.http.services.adguard.loadbalancer.server.port=80"
+       - "traefik.docker.network=proxy"
+networks:
+  proxy:
+    external: true

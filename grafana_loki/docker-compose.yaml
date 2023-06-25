@@ -6,7 +6,7 @@ networks:
     external: true
 services:
   loki:
-    image: grafana/loki:2.4.0
+    image: grafana/loki:2.7.3
     volumes:
       - /volume1/docker/loki:/etc/loki
     ports:
@@ -16,7 +16,7 @@ services:
     networks:
       - loki
   promtail:
-    image: grafana/promtail:2.4.0
+    image: grafana/promtail:2.7.3
     volumes:
       - /var/log:/var/log
       - /volume1/docker/promtail:/etc/promtail

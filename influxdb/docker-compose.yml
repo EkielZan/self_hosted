@@ -1,0 +1,33 @@
+version: '3.3'
+services:
+  influxdb:
+    image: 'influxdb:2.0'
+    container_name: influxdb
+    hostname: influxdb
+    ports:
+      - 8086:8086
+    volumes:
+      - /volume1/docker/influxdb/data:/root/.influxdb2'
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussels
+    networks:
+      - proxy
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.influxdb.entrypoints=http"
+      - "traefik.http.routers.influxdb.rule=Host(`influxdb.local.ekielzan.com`)"
+      - "traefik.http.middlewares.influxdb-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.influxdb.middlewares=influxdb-https-redirect"
+      - "traefik.http.routers.influxdb-secure.entrypoints=https"
+      - "traefik.http.routers.influxdb-secure.rule=Host(`influxdb.local.ekielzan.com`)"
+      - "traefik.http.routers.influxdb-secure.tls=true"
+      - "traefik.http.routers.influxdb-secure.service=influxdb"
+      - "traefik.http.services.influxdb.loadbalancer.server.port=8086"
+      - "traefik.http.services.influxdb.loadbalancer.server.scheme=http"
+      - "traefik.docker.network=proxy"
+networks:
+  proxy:
+    external: true
