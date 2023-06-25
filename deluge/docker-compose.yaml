@@ -1,0 +1,37 @@
+---
+version: "3"
+services:
+  deluge:
+    image: linuxserver/deluge:latest
+    container_name: deluge
+    hostname: deluge
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brusselss
+    ports:
+      - 6881:6881/tcp
+      - 6881:6881/udp
+      - 8112:8112/tcp
+    restart: unless-stopped
+    networks:
+      - proxy
+    volumes:
+      - /mnt/4tb/docker/deluge/config:/config
+      - /mnt/4tb/docker/deluge/torrents/downloads:/downloads
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.deluge.entrypoints=http"
+      - "traefik.http.routers.deluge.rule=Host(`deluge.local.ekielzan.com`)"
+      - "traefik.http.middlewares.deluge-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.deluge.middlewares=deluge-https-redirect"
+      - "traefik.http.routers.deluge-secure.entrypoints=https"
+      - "traefik.http.routers.deluge-secure.rule=Host(`deluge.local.ekielzan.com`)"
+      - "traefik.http.routers.deluge-secure.tls=true"
+      - "traefik.http.routers.deluge-secure.service=deluge"
+      - "traefik.http.services.deluge.loadbalancer.server.port=8112"
+      - "traefik.http.services.deluge.loadbalancer.server.scheme=https"
+      - "traefik.docker.network=proxy"
+networks:
+  proxy:
+    external: true

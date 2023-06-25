@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+    psa_car_controller:
+        container_name: psa_car_controller1
+        hostname: psa_car_controller
+        ports:
+            - '5000:5000'
+        volumes:
+            - /mnt/4tb/docker/psa/config:/config
+        restart: unless-stopped
+        image: flobz/psa_car_controller
+        networks:
+            - proxy
+networks:
+  proxy:
+    external: true
