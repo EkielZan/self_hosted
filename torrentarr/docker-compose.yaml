@@ -16,8 +16,8 @@ services:
     restart: unless-stopped
     network_mode: bridge
     volumes:
-      - /data/volume1/docker/deluge/config:/config
-      - /data/volume1/docker/torrents/downloads:/downloads
+      - /mnt/4tb/docker/deluge/config:/config
+      - /mnt/4tb/docker/torrents/downloads:/downloads
   radarr:
     image: linuxserver/radarr:latest
     container_name: radarr
@@ -31,8 +31,8 @@ services:
     restart: unless-stopped
     network_mode: bridge
     volumes:
-      - /data/volume1/docker/radarr/config:/config
-      - /data/volume1/docker/torrents/downloads:/downloads
+      - /mnt/4tb/docker/radarr/config:/config
+      - /mnt/4tb/docker/torrents/downloads:/downloads
       - /mnt/3tb/movies:/movies/library
   sonarr:
     image: linuxserver/sonarr:latest
@@ -47,8 +47,8 @@ services:
     restart: unless-stopped
     network_mode: bridge
     volumes:
-      - /data/volume1/docker/sonarr/config:/config
-      - /data/volume1/docker/torrents/downloads:/downloads
+      - /mnt/4tb/docker/sonarr/config:/config
+      - /mnt/4tb/docker/torrents/downloads:/downloads
       - /mnt/3tb/tvshow:/tv/library
   lidarr:
     image: linuxserver/lidarr:latest
@@ -63,8 +63,8 @@ services:
     network_mode: bridge
     restart: unless-stopped
     volumes:
-      - /data/volume1/docker/lidarr/config:/config
-      - /data/volume1/docker/torrents/downloads:/downloads
+      - /mnt/4tb/docker/lidarr/config:/config
+      - /mnt/4tb/docker/torrents/downloads:/downloads
       - /mnt/4tb/winshare/music:/music/library
   prowlarr:
     image: ghcr.io/linuxserver/prowlarr:develop
@@ -79,4 +79,4 @@ services:
       - 9696:9696/tcp
     restart: unless-stopped
     volumes:
-      - /data/volume1/docker/prowlarr/config:/config
+      - /mnt/4tb/docker/prowlarr/config:/config
