@@ -14,4 +14,4 @@ services:
     network_mode: bridge
     restart: unless-stopped
     volumes:
-      - /volume1/docker/tautulli/config:/config
+      - /mnt/4tb/docker/tautulli/config:/config
