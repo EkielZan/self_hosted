@@ -1,0 +1,23 @@
+---
+version: "2.1"
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    network_mode: bridge
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussels
+      - JELLYFIN_PublishedServerUrl=192.168.68.175 #optional
+    volumes:
+      - /mnt/4tb/jellyfin/config:/config
+      - /mnt/3tb/movies:/movies
+      - /mnt/3tb/tvshow/:/tv
+      - /mnt/3tb/DA/:/DA
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
+    restart: unless-stopped

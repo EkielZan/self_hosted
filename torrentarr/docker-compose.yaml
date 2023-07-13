@@ -80,3 +80,18 @@ services:
     restart: unless-stopped
     volumes:
       - /mnt/4tb/docker/prowlarr/config:/config
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    hostname: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussels
+    volumes:
+      - /mnt/4tb/docker/bazarr/config:/config
+      - /mnt/3tb/tvshow:/tv/library
+      - /mnt/3tb/movies:/movies/library
+    ports:
+      - 6767:6767
+    restart: unless-stopped
