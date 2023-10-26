@@ -22,24 +22,24 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /mnt/4tb/docker/traefik/data/traefik.yml:/traefik.yml:ro
-      - /mnt/4tb/docker/traefik/data/acme.json:/acme.json
-      - /mnt/4tb/docker/traefik/data/config.yml:/config.yml:ro
+      - /home/ubuntu/workplace/docker/traefik/traefik.yml:/traefik.yml:ro
+      - /home/ubuntu/workplace/docker/traefik/acme.json:/acme.json
+      - /home/ubuntu/workplace/docker/traefik/config.yml:/config.yml:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=http"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.local.ekielzan.com`)"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.ekielzan.com`)"
       - "traefik.http.middlewares.traefik-auth.basicauth.users=blacksad:$$apr1$$4SQ4..Lv$$cneES9WLY1ESPwCHYOf46/"
       - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
       - "traefik.http.routers.traefik.middlewares=traefik-https-redirect"
       - "traefik.http.routers.traefik-secure.entrypoints=https"
-      - "traefik.http.routers.traefik-secure.rule=Host(`traefik.local.ekielzan.com`)"
+      - "traefik.http.routers.traefik-secure.rule=Host(`traefik.ekielzan.com`)"
       - "traefik.http.routers.traefik-secure.middlewares=traefik-auth"
       - "traefik.http.routers.traefik-secure.tls=true"
       - "traefik.http.routers.traefik-secure.tls.certresolver=cloudflare"
-      - "traefik.http.routers.traefik-secure.tls.domains[0].main=local.ekielzan.com"
-      - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.local.ekielzan.com"
+      - "traefik.http.routers.traefik-secure.tls.domains[0].main=ekielzan.com"
+      - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.ekielzan.com"
       - "traefik.http.routers.traefik-secure.service=api@internal"
     command:
       - "--api=true"

@@ -11,7 +11,7 @@ services:
       - PGID=1000
       - TZ=Europe/Brussels
     volumes:
-      - /volume1/docker/vaultwarden/data:/data
+      - /home/ubuntu/workplace/docker/vaultwarden:/data
     ports:
       - 17881:80
     networks:
